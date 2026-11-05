@@ -6,6 +6,8 @@ Coordinates are metres; angles radians. NumPy/SciPy are external dependencies. T
 
 NPZ keys: `robot_descriptor` `(D,)`, `human_descriptors` `(B,D)`. Optional `betas` `(B,10)` is echoed only into the local output requested. `descriptor20()` accepts `(5,3,3)` thumb-first centres. Use reviewed, identical feature definitions; record source, mapping, q and feature names in the run manifest.
 
+Optional `weights` `(D,)` defaults to all ones; entries must be finite/nonnegative with positive sum. It changes the scale, NRMSE and RMS as specified in [the method](method.md). Record supplied weights; they are feature weights, not pose-family weights. `fixed_alpha1_beta_index` is selected separately and can differ from the shape-only `beta_index`.
+
 ```
 python scripts/metrics.py static --input static_inputs.npz --output static_result.json
 ```
@@ -20,6 +22,8 @@ python scripts/metrics.py self-check
 ```
 
 Reports neutral RMS, absolute/increment errors, sample-weighted and equal-family metrics. Equal-family P95 uses a discrete weighted-CDF inverse; unweighted P95 uses NumPy linear interpolation. Neither convention creates a human-distribution estimate.
+
+Each pose score is RMS across 3D point distances; the reported P95 is across these pose scores. Inputs must already contain registered targets and the chosen fitted q results. The scorer does not solve calibration or IK, and increment scores reuse the supplied robot poses. For a five-tip statistic from joint+tip IK, supply the five tip points and their reference points, retaining provenance of the 20-point optimization.
 
 ## URDF adapter
 
