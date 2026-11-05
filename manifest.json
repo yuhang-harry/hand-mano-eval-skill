@@ -1,5 +1,6 @@
 {
   "date": "2026-11-05",
+  "protocol": "complete-digit points, exact-source meshes, matching calibration/IK sets",
   "files": [
     {
       "path": ".gitignore",
@@ -8,13 +9,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 1671,
-      "sha256": "9a8d87fd1570398d6a83b99c8033e38ca56f09a37e90b470abdec13ed76cf246"
+      "bytes": 1926,
+      "sha256": "fb1cadf082f701c2df1ec1c4573242658343199e9bffa22eade5b8a7a6953605"
     },
     {
       "path": "SKILL.md",
-      "bytes": 5496,
-      "sha256": "390359b7eb65db39e520540171f7b0ce3f9594a192b81a86f520cf580f880940"
+      "bytes": 7755,
+      "sha256": "52a489202fa837ff54f1dcba924b74564430e09b962ca48a62f6383e86017f7b"
     },
     {
       "path": "agents/openai.yaml",
@@ -28,13 +29,23 @@
     },
     {
       "path": "references/inputs.md",
-      "bytes": 3307,
-      "sha256": "a034663b166c2068caf114925e731a03a3bd780520ec703672a32c5de182fcd5"
+      "bytes": 4692,
+      "sha256": "317dfd9b589c60c91bb9269a5338aa9c03ec543acde78a65d55bb93a07450847"
     },
     {
       "path": "references/method.md",
-      "bytes": 7269,
-      "sha256": "6f892dc5fbc9c3be9d952fd2ec19f7f62d216608d3a88bd5c1d14957fb02fa62"
+      "bytes": 10243,
+      "sha256": "4194bf8dd0d3a7690ec9834f51d6a21427189b90cd4757416569cbf2e7038114"
+    },
+    {
+      "path": "scripts/evaluate.py",
+      "bytes": 3842,
+      "sha256": "51b529d79cd0e5943c9990918779275cc5b8e1230b2219c78f92a831bd530c63"
+    },
+    {
+      "path": "scripts/landmarks.py",
+      "bytes": 2900,
+      "sha256": "f762b2dda45169831545739b35fc9ac149da0cd9f1826dc0a265d3f125a8f130"
     },
     {
       "path": "scripts/mano.py",
@@ -48,13 +59,13 @@
     },
     {
       "path": "scripts/robot.py",
-      "bytes": 15027,
-      "sha256": "39bbb593d51165df40202a5a0d15b5c0cd4bd414d64d23e9acf6049daa6048d3"
+      "bytes": 15035,
+      "sha256": "ac790b33d7b8098b0ea5fb736b8fe9aff58f5d761be202159aa73d6235837890"
     },
     {
       "path": "scripts/validate_core.py",
-      "bytes": 2030,
-      "sha256": "1a954e870b723f4d7c8a295699c2d8030b0503651037e19c2cb1120518b1ed9e"
+      "bytes": 3847,
+      "sha256": "1b83f0be475fda306a0e37e0a67eead77085b3f5728115ab98cfc08c79438d04"
     }
   ]
 }

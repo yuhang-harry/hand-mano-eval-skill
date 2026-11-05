@@ -22,6 +22,9 @@ python scripts/metrics.py self-check
 python scripts/validate_core.py
 ```
 
-上述命令运行合成自检；用户输入的指标计算命令见[输入与命令](references/inputs.md)。仓库提供FK、MANO适配器与评分模块；标定、姿态生成及逐姿态IK由评估流程另外提供，不包含原实验的一键重跑程序或原始数据。
+上述命令运行合成自检；用户输入的指标计算命令见[输入与命令](references/inputs.md)。仓库提供FK、MANO适配器、评分模块及通用标定／逐姿态IK程序；使用者提供已核对的点定义、目标姿态和模型资产，不包含原实验私有数据。
 
 在 Codex 中使用 `$hand-mano-eval`。仓库包含原创实现和合成测试，不包含 MANO 权重、厂商模型、个人 β 数据或内部文档。模型和数据由使用者按各自许可提供；几何结果不能替代真机任务评测。
+
+
+完整手指比较使用20个手指点，标定与测试采用同一点集。腕／机械安装代理另列。`scripts/landmarks.py`严格解析型号自身的mesh并写入显式点偏移；`scripts/evaluate.py`执行标定与限位IK。
