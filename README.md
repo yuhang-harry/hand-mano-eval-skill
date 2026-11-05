@@ -2,6 +2,8 @@
 
 用于灵巧手 URDF 与 MANO 的几何比较及排名审计。重点是把骨架比例、零位形差、多姿态绝对误差、位移变化和指尖位置分清楚。
 
+URDF没有天然的β。先按声明的特征匹配或拟合MANO手型β和整手尺度α，再冻结它们，标定参考关节角与配准，并逐姿态求机器人关节角q。β的数值大小、绝对位置误差或单个子指标都不能直接作为整体能力排名。
+
 - [SKILL.md](SKILL.md)：执行流程与判断边界。
 - [计算方法](references/method.md)：公式、标定、统计与敏感性。
 - [输入与命令](references/inputs.md)：可复用的 FK、Jacobian、MANO LBS 和指标脚本。
@@ -19,5 +21,7 @@ git clone https://github.com/yuhang-harry/hand-mano-eval-skill.git ~/.codex/skil
 python scripts/metrics.py self-check
 python scripts/validate_core.py
 ```
+
+上述命令运行合成自检；用户输入的指标计算命令见[输入与命令](references/inputs.md)。仓库提供FK、MANO适配器与评分模块；标定、姿态生成及逐姿态IK由评估流程另外提供，不包含原实验的一键重跑程序或原始数据。
 
 在 Codex 中使用 `$hand-mano-eval`。仓库包含原创实现和合成测试，不包含 MANO 权重、厂商模型、个人 β 数据或内部文档。模型和数据由使用者按各自许可提供；几何结果不能替代真机任务评测。

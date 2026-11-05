@@ -8,13 +8,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 1108,
-      "sha256": "8859bb11c48d0bae870da68ab607dfc8ea15c5a946e617a91e921a2c4323579f"
+      "bytes": 1671,
+      "sha256": "9a8d87fd1570398d6a83b99c8033e38ca56f09a37e90b470abdec13ed76cf246"
     },
     {
       "path": "SKILL.md",
-      "bytes": 4554,
-      "sha256": "8be90b939f83be94a136299d809055d4eee0854b7d67e729c485048258b938b5"
+      "bytes": 5496,
+      "sha256": "390359b7eb65db39e520540171f7b0ce3f9594a192b81a86f520cf580f880940"
     },
     {
       "path": "agents/openai.yaml",
@@ -23,18 +23,18 @@
     },
     {
       "path": "references/audit-example.md",
-      "bytes": 2587,
-      "sha256": "e5a91d1e96a627c2e8074fd860e6f7171469ea9dc6a66360519dca58c1bcc6ea"
+      "bytes": 3126,
+      "sha256": "31eed98919aed815adf1e21b393b3ed5a9c598fdd0d805d8115aae149214fd0b"
     },
     {
       "path": "references/inputs.md",
-      "bytes": 2528,
-      "sha256": "5d724455f3624a5617d92fc70756f0a3e4281ff6cf3aff7721c5dc4148474581"
+      "bytes": 3307,
+      "sha256": "a034663b166c2068caf114925e731a03a3bd780520ec703672a32c5de182fcd5"
     },
     {
       "path": "references/method.md",
-      "bytes": 4967,
-      "sha256": "dadda8ce2d4cd52f4dc6dae3a41ddf6a62e7d78ae9de10f836e548a3b6e2392f"
+      "bytes": 7269,
+      "sha256": "6f892dc5fbc9c3be9d952fd2ec19f7f62d216608d3a88bd5c1d14957fb02fa62"
     },
     {
       "path": "scripts/mano.py",

@@ -20,11 +20,11 @@ Read [the method](references/method.md) before choosing metrics and [the audited
 ## Compute and audit
 
 1. Extract identical static features. Fit one whole-hand scale per candidate beta, then select beta by a declared objective. Distinguish discrete matching from continuous fitting; record MANO convention and priors.
-2. Report physical-size and shape-only residuals, scale and per-finger contributions. Pairwise base distances are correlated; longer distances dominate squared error even with equal item weights. Base spacing may depend on reference q. Check bone-only, thumb/base and terminal-length sensitivity.
-3. Calibrate beta/scale and proper R,t once on independent calibration targets, then freeze them. For held-out poses optimize only feasible physical q; save q, targets, predictions and status. Do not align each pose again.
-4. Show neutral position RMS, absolute multi-pose RMS and movement-increment RMS together. Increment error compares changes from neutral; it is a diagnostic. Never subtract two RMS values as a decomposition.
+2. Report physical-size and shape-only residuals, scale and per-finger contributions. Equal item weights do not imply anatomical balance: feature magnitudes affect the scale fit and normalization denominator; actual error contributions require residual SSE. Pairwise base distances are dependent and base spacing may depend on reference q. For bone-only, thumb/base or terminal-length sensitivity, state whether beta/alpha are refitted or held fixed; compare percentages only within the same feature definition.
+3. Select or fit beta/scale by the declared shape protocol and freeze them before calibrating physical reference angles q0 and proper R,t on calibration targets excluded from evaluation. Distinguish static q_ref, fitted q0 and a verified natural open hand. For held-out poses optimize only the selected feasible physical q; save optimized/frozen variables, targets, predictions and status. Do not align each pose again.
+4. Show reference-position RMS, absolute multi-pose RMS and movement-increment RMS together. Declare whether increment scores reuse absolute-objective q or come from a separate optimization. A reference residual is not a lower bound for every pose. Never subtract two RMS values as a decomposition or infer motion quality from their rank correlation.
 5. Separate internal-centre and fingertip scores. An internal joint centre cannot observe its own terminal rotation. State whether tips came from joint+tip or tip-only IK.
-6. Report per-pose RMS mean/P95 and predeclared threshold attainment, with per-family or equal-family statistics. Counts silently weight gesture families. Synthetic targets establish synthetic-test attainment, not human coverage or temporal dynamics.
+6. Compute each pose's RMS of 3D point distances, then mean/P95 across poses; pose P95 is not a percentile of pooled point errors. Report predeclared threshold attainment and per-family or equal-family statistics. Label adapted-beta/common-beta conditions on every result table. Counts weight gesture families. Synthetic targets establish synthetic-test attainment, not human coverage or temporal dynamics.
 7. Investigate surprises in this order: model identity, point semantics, units/axes/limits, registration, solver restarts, then weights/point/target sensitivity. Inspect actual point overlays before accepting anatomical claims. Correct evidenced faults, preserve original outputs and identify changed inputs.
 
 ## Reusable modules
@@ -33,6 +33,8 @@ Read [the method](references/method.md) before choosing metrics and [the audited
 - `scripts/robot.py`: physical URDF FK/Jacobian with composed mimic limits (NumPy/SciPy). Supply reviewed landmark names.
 - `scripts/mano.py`: right-hand MANO FK and tip LBS from external user-owned arrays (NumPy/SciPy).
 - [Input schemas and commands](references/inputs.md).
+
+The supplied modules are adapters and scorers. They do not provide the archived experiment's calibration/IK runner, pose generator or licensed/private inputs. Supply and record those parts before claiming end-to-end reproduction.
 
 Validate independent FK/Jacobian, terminal-tip motion, mimic composition, proper registration, scale convention, known-MANO recovery and saved summaries as relevant. Multi-start convergence does not prove global optimality or infeasibility.
 
