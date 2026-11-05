@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dexterous Hand–MANO Evaluation"
+  short_description: "Audit geometry, calibration, and pose scores for robot hands"
+  default_prompt: "Use $hand-mano-eval to compare robot hands with MANO and audit rank changes."
