@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-05",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 69,
+      "sha256": "8996c59c057a836e64dc464e35151afd123adf45e380cf856fef26281eebf7d3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1108,
+      "sha256": "8859bb11c48d0bae870da68ab607dfc8ea15c5a946e617a91e921a2c4323579f"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 4554,
+      "sha256": "8be90b939f83be94a136299d809055d4eee0854b7d67e729c485048258b938b5"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "bytes": 243,
+      "sha256": "9237445606d4dccac7287bd44e76862b7c1c23c3c5683a6e5926a9ce757c7a41"
+    },
+    {
+      "path": "references/audit-example.md",
+      "bytes": 2587,
+      "sha256": "e5a91d1e96a627c2e8074fd860e6f7171469ea9dc6a66360519dca58c1bcc6ea"
+    },
+    {
+      "path": "references/inputs.md",
+      "bytes": 2528,
+      "sha256": "5d724455f3624a5617d92fc70756f0a3e4281ff6cf3aff7721c5dc4148474581"
+    },
+    {
+      "path": "references/method.md",
+      "bytes": 4967,
+      "sha256": "dadda8ce2d4cd52f4dc6dae3a41ddf6a62e7d78ae9de10f836e548a3b6e2392f"
+    },
+    {
+      "path": "scripts/mano.py",
+      "bytes": 3947,
+      "sha256": "e19030c23e8e79ce93490c074aa3093cc60bf863355468df794b8296ea348213"
+    },
+    {
+      "path": "scripts/metrics.py",
+      "bytes": 6952,
+      "sha256": "f3b0e7708cb9bdda5a0ce5c961fd454c2bfe7837a1e476f86b6fb82d374c870a"
+    },
+    {
+      "path": "scripts/robot.py",
+      "bytes": 15027,
+      "sha256": "39bbb593d51165df40202a5a0d15b5c0cd4bd414d64d23e9acf6049daa6048d3"
+    },
+    {
+      "path": "scripts/validate_core.py",
+      "bytes": 2030,
+      "sha256": "1a954e870b723f4d7c8a295699c2d8030b0503651037e19c2cb1120518b1ed9e"
+    }
+  ]
+}
