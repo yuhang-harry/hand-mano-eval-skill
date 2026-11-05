@@ -62,6 +62,20 @@ For the same person across robots, freeze a common target beta and declared size
 
 Numerical checks validate code; source/mapping/visual checks validate meaning. If relevant feature, calibration or target controls change the winner, present the trade-off rather than an overall winner.
 
-The repository supplies FK/MANO adapters and metric calculation. Calibration, pose generation and constrained IK must be supplied by the evaluation workflow; the original private/licensed inputs and full archived experiment runner are not bundled.
+The repository supplies FK/MANO adapters, metrics and a generic matching-point-set calibration/IK runner. Pose generation, reviewed robot mappings, the private/licensed inputs and the original archived experiment runner are not bundled.
 
 Primary references: [MANO](https://mano.is.tue.mpg.de/), [SMPL-X LBS](https://github.com/vchoutas/smplx/blob/main/smplx/lbs.py), [dex-retargeting](https://github.com/dexsuite/dex-retargeting), [ROS joint/mimic documentation](https://control.ros.org/humble/doc/ros2_control/hardware_interface/doc/joints_userdoc.html).
+
+## Complete-digit protocol and overlays
+
+Use each digit's three internal centres plus its terminal surface endpoint: 20 hand points. A 25-distance morphology descriptor adds five terminal lengths to the older 20-distance descriptor. It is still 25 distances, not 25 keypoints. Refit beta/alpha when changing descriptors and keep the old results as a separate protocol.
+
+Fingertips must have reviewed link-local offsets with exact-source mesh provenance. For a rounded terminal surface, a declared axial end-cap centre can be a reproducible geometric proxy; record the selected visual links, axis/sign, cap depth, coordinates, mesh hashes and sensitivity. Check the end cap lies on the intended terminal surface and inspect the overlay. Do not accept a global filename match or a sensor frame merely because it has a tip-like name.
+
+Calibrate and solve evaluation IK using the same complete point set. Report hand20, internal15, tips5 and each finger separately. A wrist requires a separately supported definition: a proximal palm attachment-centre proxy measures mechanical mounting geometry and is not automatically MANO's wrist. If only this proxy is available, label it, inspect/report its residual separately and exclude it from the common hand objective. Never mix 20/21-point scores or treat missing wrists as zero residual.
+
+There are two different reference illustrations. (1) Robot IK toward flat MANO may produce a bent best-found q0 because proportions differ; show the angles and residual rather than presenting it as natural open. (2) Keep the robot's actual reference q_ref fixed, fit a bounded MANO pose and one proper rigid registration for illustration, and label that condition separately. Diagnostic registration/pose is not used to silently improve held-out scores. Render original whole-hand geometry; do not apply per-finger translations, rescaling, mesh warps or a favourable per-pose re-registration.
+
+The O30 overlay regression illustrates an asset-identity fault: same-named L20 meshes were associated with O30. Checking transforms against that manifest only confirmed arithmetic. The preventive check is exact package-relative URI resolution and comparison with source paths/hashes before overlay/FK checks. This fault affects the mesh illustration, not a historical joint-origin-only distance calculation; newly mesh-derived endpoints do require recomputation.
+
+A revolute axis is a line, not a uniquely defined 3D anatomical centre. CAD exporters may put its origin on one side of the finger. A reviewed geometric centre proxy can be placed along the same axis using the hinge region of the correct child mesh; save the radial region, projection extent and signed offset. An axis parallel to the outgoing segment or an absent hinge mesh leaves this position ambiguous and must be flagged. Changing this axis-coordinate convention requires recomputing descriptors and fits; arithmetic agreement with old origins does not validate their anatomical meaning.

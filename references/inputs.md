@@ -38,7 +38,7 @@ xyz = r.points(r.reference_x)
 jac = r.jacobian(r.reference_x)  # (N,3,nq)
 ```
 
-Supports15/20 explicitly named axis origins; no anatomical auto-detection. Common-upstream rigid variables and angles invisible to selected points stay at reference q. Mimic chains/limits compose; inspect `joint_manifest()`. Real omitted transmission constraints cannot be inferred.
+Supports15/20/21 explicitly named axis origins; no anatomical auto-detection. Common-upstream rigid variables and angles invisible to selected points stay at reference q. Mimic chains/limits compose; inspect `joint_manifest()`. Real omitted transmission constraints cannot be inferred.
 
 ## MANO adapter
 
@@ -51,3 +51,16 @@ xyz = m.points(beta10, theta45, with_tips=False)
 ```
 
 theta45: native local axis-angle joints1…15; flat mean, root identity; wrist-centred output. Returned points are thumb-first, with per-finger tip appended only when requested. Validate your assets/conventions against an independent implementation before comparing products. The repository contains no MANO model arrays.
+
+## Explicit surface landmarks and full-point IK
+
+Use `landmarks.resolve_visual(uri, source_urdf, package_roots)` to resolve resources exactly, and `landmarks.add_fixed_landmarks(source_urdf, definitions, output_urdf)` to create a copy with reviewed fixed link-local offsets. Each definition has `name`, `parent_link`, `xyz_m` and `semantics`. Keep offsets/source hashes in the run manifest. No automatic anatomical wrist or tip inference is provided.
+
+For N=20 or N=21, pass a flat `landmark_joints` list in the intended order. `point_semantics` must describe every scored point. A wrist attachment proxy can be calculated separately but must not be included as an anatomical wrist in this input. Calibration and evaluation NPZ arrays must use the same N and point order.
+
+```
+python scripts/evaluate.py --config reviewed_model.json --targets targets.npz --output outputs/full_points
+python scripts/metrics.py poses --input outputs/full_points.npz --output outputs/full_points_scores.json
+```
+
+`targets.npz`: `calibration_m(N,3)`, `evaluation_m(P,N,3)` in unscaled MANO metres and scalar positive `alpha`. Model JSON contains the adapter configuration plus `point_semantics`. The runner freezes alpha/R/t after calibration; only physical q changes for evaluation. It saves arrays and diagnostics and does not prove global optimality, anatomy, collision safety or hardware success.
